@@ -21,16 +21,18 @@
           size="xl"
           color="white"
           class="font-semibold"
+          @click="scrollToElement('#about')"
         >
-          Inizia Ora
+          Scopri chi siamo
         </UButton>
         <UButton
           size="xl"
           variant="ghost"
           color="white"
           class="font-semibold"
+          @click="scrollToElement('#contact')"
         >
-          Scopri i Corsi
+          Contattaci
         </UButton>
       </div>
     </div>
@@ -42,8 +44,11 @@ import Hero from '../atoms/Hero.vue'
 import { onMounted, ref } from 'vue'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
+import { useScrollTo } from '~/composables/useScrollTo'
 
 gsap.registerPlugin(ScrollTrigger)
+
+const { scrollToElement } = useScrollTo()
 
 const titleRef = ref(null)
 const subtitleRef = ref(null)
