@@ -5,7 +5,7 @@
     :class="{ 'header-hidden': isHeaderHidden }"
   >
     <UContainer>
-      <div class="flex justify-between items-center h-16 px-4">
+      <div class="flex justify-between items-center h-16 px-4 text-white">
         <div class="flex items-center">
           <NuxtLink to="/" class="text-xl font-bold">
             Logo
@@ -46,7 +46,7 @@
       >
         <div 
           v-if="isMenuOpen" 
-          class="md:hidden py-6 px-4 space-y-4 border-t bg-white"
+          class="md:hidden py-6 px-4 space-y-4 border-t text-white"
         >
           <UButton
             v-for="(item, index) in menuItems"

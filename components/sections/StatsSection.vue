@@ -10,7 +10,7 @@
         </h2>
         <p 
           ref="subtitleRef"
-          class="text-lg text-white/80"
+          class="text-lg"
         >
           L'impatto del nostro lavoro in numeri
         </p>
@@ -28,7 +28,7 @@
           <div class="text-4xl md:text-5xl font-bold">
             {{ stat.value }}{{ stat.suffix }}
           </div>
-          <div class="text-sm md:text-base text-white/80">
+          <div class="text-sm md:text-base">
             {{ stat.label }}
           </div>
         </div>

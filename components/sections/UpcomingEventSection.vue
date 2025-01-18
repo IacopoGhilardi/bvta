@@ -1,5 +1,5 @@
 <template>
-  <section class="py-16 bg-white">
+  <section class="py-16">
     <UContainer>
       <h2 
         ref="titleRef" 
@@ -15,7 +15,7 @@
         <div 
           v-for="event in upcomingEvents" 
           :key="event.id"
-          class="bg-white rounded-lg shadow-lg overflow-hidden"
+          class="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-100 hover:border-primary transition-colors duration-300"
         >
           <img 
             :src="event.imageUrl" 
@@ -23,16 +23,16 @@
             class="w-full h-48 object-cover"
           >
           <div class="p-6">
-            <div class="flex items-center gap-2 text-primary-dark mb-3">
+            <div class="flex items-center gap-2 text-primary mb-3">
               <UIcon name="i-heroicons-calendar" />
               <span class="text-sm">{{ event.date }}</span>
             </div>
-            <h3 class="text-xl font-semibold mb-2">{{ event.title }}</h3>
+            <h3 class="text-xl font-semibold mb-2 text-background-primary">{{ event.title }}</h3>
             <p class="text-gray-600 mb-4">{{ event.description }}</p>
             <UButton
               color="primary"
               variant="soft"
-              class="w-full"
+              class="w-full bg-primary text-white hover:bg-primary-dark hover:text-white transition-colors duration-300"
             >
               Scopri di più
             </UButton>
