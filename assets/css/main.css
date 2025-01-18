@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme {
+  --font-sans: 'Public Sans', sans-serif;
+  --breakpoint-3xl: 1920px;
+
+  --color-primary: #FD7F00;
+  --color-secondary: #E6B41D;
+  --color-primary-dark: #FF5100;
+  --color-background-primary: #160C0A;
+  --color-accent: #000000;
+}

@@ -1,20 +1,17 @@
 <template>
   <header 
     ref="header" 
-    class="border-b fixed w-full z-50 bg-primary"
+    class="border-b border-primary fixed w-full z-50 bg-background-primary shadow-lg"
     :class="{ 'header-hidden': isHeaderHidden }"
   >
     <UContainer>
-      <!-- Desktop Menu -->
       <div class="flex justify-between items-center h-16 px-4">
-        <!-- Logo -->
         <div class="flex items-center">
-          <NuxtLink to="/" class="text-xl font-bold text-primary-500">
-            Logo Azienda
+          <NuxtLink to="/" class="text-xl font-bold">
+            Logo
           </NuxtLink>
         </div>
 
-        <!-- Desktop Navigation -->
         <nav class="hidden md:flex space-x-4">
           <UButton
             v-for="(item, index) in menuItems"
@@ -101,32 +98,26 @@ watch(scrollY, (newY) => {
   // Non applicare l'animazione se il menu mobile è aperto
   if (isMenuOpen.value) return
 
-  if (newY > lastScrollPosition.value && newY > 100) {
-    // Scrolling down - nascondi header
-    gsap.to(header.value, {
-      yPercent: -100,
-      duration: 0.3,
-      ease: 'power2.inOut',
-      onComplete: () => {
-        isHeaderHidden.value = true
-      }
-    })
-  } else {
-    // Scrolling up - mostra header
-    isHeaderHidden.value = false
-    gsap.to(header.value, {
-      yPercent: 0,
-      duration: 0.3,
-      ease: 'power2.inOut'
-    })
-  }
+  // if (newY > lastScrollPosition.value && newY > 100) {
+  //   // Scrolling down - nascondi header
+  //   gsap.to(header.value, {
+  //     yPercent: -100,
+  //     duration: 0.3,
+  //     ease: 'power2.inOut',
+  //     onComplete: () => {
+  //       isHeaderHidden.value = true
+  //     }
+  //   })
+  // } else {
+  //   // Scrolling up - mostra header
+  //   isHeaderHidden.value = false
+  //   gsap.to(header.value, {
+  //     yPercent: 0,
+  //     duration: 0.3,
+  //     ease: 'power2.inOut'
+  //   })
+  // }
   
   lastScrollPosition.value = newY
 })
 </script>
-
-<style scoped>
-.header-hidden {
-  transform: translateY(-100%);
-}
-</style>

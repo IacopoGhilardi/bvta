@@ -5,7 +5,7 @@
         <AboutSection id="about" />
         <StatsSection id="stats" />
         <UpcomingEventSection id="events" />
-        <ContactSection id="contact" />
+        <!-- <ContactSection id="contact" /> -->
     </Main>
 </template>
 <script setup>

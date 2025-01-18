@@ -1,5 +1,5 @@
 <template>
-  <section class="py-16 bg-gray-50 overflow-hidden">
+  <section class="py-16 overflow-hidden">
     <UContainer>
       <h2 
         ref="titleRef" 

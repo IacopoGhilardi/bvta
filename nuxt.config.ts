@@ -7,5 +7,12 @@ export default defineNuxtConfig({
   ],
   build: {
     transpile: ['gsap']
+  },
+  css: ['~/assets/css/main.css'],
+  ui: {
+    theme: {
+        colors: ['primary', 'secondary', 'accent', 'neutral'],
+        transitions: true,
+    },
   }
 });

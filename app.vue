@@ -1,8 +1,8 @@
 <template>
   <div>
-    <NuxtLayout>
+    <UApp>
       <NuxtPage />
-    </NuxtLayout>
+    </UApp>
   </div>
 </template>
 <script setup>

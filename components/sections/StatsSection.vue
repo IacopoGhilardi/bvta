@@ -1,5 +1,5 @@
 <template>
-  <section class="py-24 bg-primary text-white">
+  <section class="py-24 bg-background-primary text-white">
     <UContainer>
       <div class="text-center mb-12">
         <h2 

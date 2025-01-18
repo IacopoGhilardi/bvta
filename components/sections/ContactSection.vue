@@ -1,5 +1,5 @@
 <template>
-  <section class="py-24 bg-gray-50">
+  <section class="py-24 bg-background-primary">
     <UContainer>
       <div class="max-w-4xl mx-auto">
         <!-- Header -->

@@ -1,8 +1,7 @@
 <template>
-  <section class="py-24 overflow-hidden">
+  <section class="pt-24 overflow-hidden bg-background-primary">
     <UContainer>
       <div class="grid md:grid-cols-2 gap-12 items-center px-4 md:px-0">
-        <!-- Image Side -->
         <div class="relative order-2 md:order-1">
           <div ref="imageWrapperRef" class="relative z-10">
             <img
@@ -11,24 +10,22 @@
               class="rounded-lg shadow-xl w-full"
             />
           </div>
-          <!-- Decorative Shape -->
-          <div 
+          <div
             ref="shapeRef"
             class="absolute -left-4 md:-left-8 -bottom-4 md:-bottom-8 w-full h-full border-8 border-primary rounded-lg -z-10"
           ></div>
         </div>
 
-        <!-- Content Side -->
         <div class="space-y-6 order-1 md:order-2">
           <h2 
             ref="titleRef"
-            class="text-3xl md:text-4xl font-bold text-primary"
+            class="text-3xl md:text-4xl font-bold text-gray-150"
           >
             Chi Siamo
           </h2>
           <div 
             ref="contentRef"
-            class="space-y-4 text-gray-600"
+            class="space-y-4 text-gray-150"
           >
             <p class="text-base md:text-lg">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, quibusdam. 
@@ -38,15 +35,6 @@
               Proin condimentum sollicitudin felis. Sed sagittis hendrerit malesuada. 
               Mauris consectetur sapien eget diam finibus, in eleifend ex tincidunt.
             </p>
-          </div>
-          <div ref="buttonRef">
-            <UButton
-              color="primary"
-              size="lg"
-              class="font-semibold w-full md:w-auto"
-            >
-              Scopri di più
-            </UButton>
           </div>
         </div>
       </div>

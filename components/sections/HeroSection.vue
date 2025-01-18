@@ -19,8 +19,8 @@
       <div ref="buttonsRef" class="flex gap-4">
         <UButton
           size="xl"
-          color="white"
-          class="font-semibold"
+          color="primary"
+          class="font-semibold text-white bg-primary hover:bg-primary-dark"
           @click="scrollToElement('#about')"
         >
           Scopri chi siamo
@@ -29,7 +29,7 @@
           size="xl"
           variant="ghost"
           color="white"
-          class="font-semibold"
+          class="font-semibold border border-white hover:bg-white hover:text-primary"
           @click="scrollToElement('#contact')"
         >
           Contattaci

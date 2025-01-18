@@ -1,6 +1,5 @@
 <template>
   <div class="relative min-h-[80vh] flex items-center">
-    <!-- Background with overlay -->
     <div class="absolute inset-0 z-0">
       <img
         :src="imageUrl"
