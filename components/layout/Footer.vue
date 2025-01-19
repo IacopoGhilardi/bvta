@@ -10,17 +10,11 @@
           
           <!-- Icone sociali -->
           <div class="flex items-center gap-4">
-            <a href="https://www.instagram.com/_beachvolleytirreniaacademy/" 
+            <a v-for="link in socialLinks" :href="link.path" 
                class="text-gray-400 hover:text-primary transition-colors" 
                target="_blank"
             >
-              <UIcon name="i-simple-icons-instagram" class="w-6 h-6" />
-            </a>
-            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
-              <UIcon name="i-simple-icons-whatsapp" class="w-6 h-6" />
-            </a>
-            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
-              <UIcon name="i-simple-icons-gmail" class="w-6 h-6" />
+              <UIcon :name="link.icon" class="w-6 h-6" />
             </a>
           </div>
 
@@ -57,14 +51,13 @@
 
 <script setup>
 import { useScrollTo } from '~/composables/useScrollTo'
+import footerContent from '~/content/footer.json'
 
 const { scrollToElement } = useScrollTo()
 
-const menuItems = [
-  { label: 'Home', path: '#hero' },
-  { label: 'Chi Siamo', path: '#about' },
-  { label: 'Partner', path: '#partners' }
-]
+const menuItems = ref(footerContent.footerMenu)
+const socialLinks = ref(footerContent.socialLinks)
+
 
 const handleNavClick = (path, event) => {
   event.preventDefault()

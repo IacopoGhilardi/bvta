@@ -12,7 +12,7 @@
           </NuxtLink>
         </div>
 
-        <nav class="hidden md:flex space-x-4">
+        <nav class="hidden md:flex space-x-4"> 
           <UButton
             v-for="(item, index) in menuItems"
             :key="index"
