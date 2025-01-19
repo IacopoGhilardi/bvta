@@ -6,13 +6,13 @@
           ref="titleRef"
           class="text-3xl md:text-4xl font-bold mb-4"
         >
-          I Nostri Numeri
+          {{ content.title }}
         </h2>
         <p 
           ref="subtitleRef"
           class="text-lg"
         >
-          L'impatto del nostro lavoro in numeri
+          {{ content.subtitle }}
         </p>
       </div>
 
@@ -21,7 +21,7 @@
         class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12"
       >
         <div 
-          v-for="stat in stats" 
+          v-for="stat in content.stats" 
           :key="stat.id"
           class="text-center space-y-2"
         >
@@ -40,37 +40,12 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import { gsap } from 'gsap'
+import statsContent from '~/content/stats.json'
 
 const titleRef = ref(null)
 const subtitleRef = ref(null)
 const statsRef = ref(null)
-
-const stats = [
-  { 
-    id: 1, 
-    value: '150',
-    suffix: '+',
-    label: 'Affiliazioni nel 2023' 
-  },
-  { 
-    id: 2, 
-    value: '25',
-    suffix: '',
-    label: 'Tornei Organizzati' 
-  },
-  { 
-    id: 3, 
-    value: '1.2',
-    suffix: 'K',
-    label: 'Partecipanti Totali' 
-  },
-  { 
-    id: 4, 
-    value: '8',
-    suffix: '',
-    label: 'Anni di Esperienza' 
-  }
-]
+const content = ref(statsContent)
 
 onMounted(() => {
   if (process.client) {

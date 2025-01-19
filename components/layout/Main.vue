@@ -4,7 +4,7 @@
       <div class="pt-16 flex-grow">
         <slot />
       </div>
-      <Footer />
+      <Footer id="contact" />
     </div>
   </template>
   

@@ -5,7 +5,7 @@
         ref="titleRef" 
         class="text-3xl font-bold text-center text-primary mb-12"
       >
-        Prossimi Eventi
+        <!-- {{ content.title }} -->
       </h2>
       
       <div 
@@ -13,7 +13,7 @@
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
       >
         <div 
-          v-for="event in upcomingEvents" 
+          v-for="event in content.events" 
           :key="event.id"
           class="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-100 hover:border-primary transition-colors duration-300"
         >
@@ -34,7 +34,7 @@
               variant="soft"
               class="w-full bg-primary text-white hover:bg-primary-dark hover:text-white transition-colors duration-300"
             >
-              Scopri di più
+              {{ content.button.text }}
             </UButton>
           </div>
         </div>
@@ -47,35 +47,14 @@
 import { onMounted, ref } from 'vue'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
+import eventsContent from '~/content/events.json'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const titleRef = ref(null)
 const cardsRef = ref(null)
 
-const upcomingEvents = [
-  {
-    id: 1,
-    title: 'Torneo Estivo 2024',
-    date: '15 Giugno 2024',
-    description: 'Partecipa al più grande torneo di beach volley della stagione. Premi e divertimento assicurato per tutti i partecipanti.',
-    imageUrl: 'https://images.unsplash.com/photo-1531346878377-a5be20888e57?q=80&w=2070'
-  },
-  {
-    id: 2,
-    title: 'Beach Volley Camp',
-    date: '1-7 Luglio 2024',
-    description: 'Una settimana intensiva di allenamento con i migliori coach nazionali. Perfetto per migliorare la tua tecnica.',
-    imageUrl: 'https://images.unsplash.com/photo-1531346878377-a5be20888e57?q=80&w=2070'
-  },
-  {
-    id: 3,
-    title: 'Sunset Tournament',
-    date: '20 Luglio 2024',
-    description: 'Torneo al tramonto seguito da beach party. Un evento unico che combina sport e divertimento.',
-    imageUrl: 'https://images.unsplash.com/photo-1531346878377-a5be20888e57?q=80&w=2070'
-  }
-]
+const content = ref(eventsContent)
 
 onMounted(() => {
   // Title animation
@@ -100,7 +79,7 @@ onMounted(() => {
     ease: 'power3.out',
     scrollTrigger: {
       trigger: cardsRef.value,
-      start: 'top bottom-=100',
+      start: 'top bottom-=50',
       toggleActions: 'play none none reverse'
     }
   })

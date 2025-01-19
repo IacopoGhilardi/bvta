@@ -1,6 +1,6 @@
 <template>
   <Hero
-    imageUrl="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?q=80&w=2070"
+    :imageUrl="content.backgroundImage"
     imageAlt="Beach Volley Action"
   >
     <div class="max-w-2xl text-white">
@@ -8,31 +8,25 @@
         ref="titleRef"
         class="text-5xl md:text-6xl font-bold mb-6 leading-tight"
       >
-        BVTA
+        {{ content.title }}
       </h1>
       <p 
         ref="subtitleRef"
         class="text-xl md:text-2xl mb-8 text-gray-200"
       >
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt enim corporis natus expedita fugiat doloribus repellat, officia doloremque consequatur optio sequi reiciendis. Nobis soluta maxime cum maiores! Ex, doloremque error?
+        {{ content.subtitle }}
       </p>
       <div ref="buttonsRef" class="flex gap-4">
         <UButton
+          v-for="button in content.buttons"
+          :key="button.text"
           size="xl"
-          color="primary"
-          class="font-semibold text-white bg-primary hover:bg-primary-dark"
-          @click="scrollToElement('#about')"
+          :color="button.variant === 'primary' ? 'primary' : 'white'"
+          :variant="button.variant === 'primary' ? 'solid' : 'ghost'"
+          :class="button.variant === 'primary' ? 'text-white bg-primary hover:bg-primary-dark' : 'border border-white hover:bg-white hover:text-primary'"
+          @click="scrollToElement(button.link)"
         >
-          Scopri chi siamo
-        </UButton>
-        <UButton
-          size="xl"
-          variant="ghost"
-          color="white"
-          class="font-semibold border border-white hover:bg-white hover:text-primary"
-          @click="scrollToElement('#contact')"
-        >
-          Contattaci
+          {{ button.text }}
         </UButton>
       </div>
     </div>
@@ -45,6 +39,7 @@ import { onMounted, ref } from 'vue'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import { useScrollTo } from '~/composables/useScrollTo'
+import heroContent from '~/content/hero.json'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -53,6 +48,7 @@ const { scrollToElement } = useScrollTo()
 const titleRef = ref(null)
 const subtitleRef = ref(null)
 const buttonsRef = ref(null)
+const content = ref(heroContent)
 
 onMounted(() => {
   const tl = gsap.timeline({

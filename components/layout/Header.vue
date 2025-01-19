@@ -95,28 +95,7 @@ const handleNavClick = (path, event) => {
 }
 
 watch(scrollY, (newY) => {
-  // Non applicare l'animazione se il menu mobile è aperto
   if (isMenuOpen.value) return
-
-  // if (newY > lastScrollPosition.value && newY > 100) {
-  //   // Scrolling down - nascondi header
-  //   gsap.to(header.value, {
-  //     yPercent: -100,
-  //     duration: 0.3,
-  //     ease: 'power2.inOut',
-  //     onComplete: () => {
-  //       isHeaderHidden.value = true
-  //     }
-  //   })
-  // } else {
-  //   // Scrolling up - mostra header
-  //   isHeaderHidden.value = false
-  //   gsap.to(header.value, {
-  //     yPercent: 0,
-  //     duration: 0.3,
-  //     ease: 'power2.inOut'
-  //   })
-  // }
   
   lastScrollPosition.value = newY
 })

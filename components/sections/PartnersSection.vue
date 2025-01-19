@@ -5,13 +5,14 @@
         ref="titleRef" 
         class="text-3xl font-bold text-center text-primary mb-12"
       >
-        I Nostri Partner
+        {{ content.title }}
       </h2>
       
-      <div ref="sliderRef" class="relative">
+      <div ref="sliderRef" class="relative overflow-hidden">
         <div 
           ref="trackRef"
           class="flex gap-8 items-center"
+          :style="{ width: `${trackWidth}px` }"
         >
           <PartnerLogo
             v-for="partner in duplicatedPartners"
@@ -30,40 +31,17 @@ import { onMounted, ref, computed } from 'vue'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import PartnerLogo from '../atoms/PartnerLogo.vue'
-
-// Register ScrollTrigger plugin
+import partnersContent from '~/content/partners.json'
 gsap.registerPlugin(ScrollTrigger)
 
 const titleRef = ref(null)
 const sliderRef = ref(null)
 const trackRef = ref(null)
+const trackWidth = ref(0)
+const content = ref(partnersContent)
 
-const partners = [
-  {
-    id: 1,
-    name: 'Partner 1',
-    imageUrl: 'https://placehold.co/200x80?text=Partner+1'
-  },
-  {
-    id: 2,
-    name: 'Partner 2',
-    imageUrl: 'https://placehold.co/200x80?text=Partner+2'
-  },
-  {
-    id: 3,
-    name: 'Partner 3',
-    imageUrl: 'https://placehold.co/200x80?text=Partner+3'
-  },
-  {
-    id: 4,
-    name: 'Partner 4',
-    imageUrl: 'https://placehold.co/200x80?text=Partner+4'
-  }
-]
-
-// Duplica i partner per il carosello infinito
 const duplicatedPartners = computed(() => {
-  return [...partners, ...partners.map(p => ({...p, id: p.id + '_clone'}))]
+  return [...content.value.partners, ...content.value.partners.map(p => ({...p, id: p.id + '_clone'}))]
 })
 
 onMounted(() => {
@@ -80,20 +58,58 @@ onMounted(() => {
     }
   })
 
-  const tl = gsap.timeline({
-    repeat: -1,
-    defaults: { ease: 'none' }
-  })
+  // Calculate total width after images are loaded
+  const calculateWidth = () => {
+    const logos = trackRef.value.children
+    let totalWidth = 0
+    for (let logo of logos) {
+      totalWidth += logo.offsetWidth + 32 // 32px is the gap (gap-8)
+    }
+    trackWidth.value = totalWidth - 32 // Subtract last gap
+  }
 
-  const singleSetWidth = trackRef.value.offsetWidth / 2
+  // Wait for images to load
+  const images = trackRef.value.getElementsByTagName('img')
+  let loadedImages = 0
+  for (let img of images) {
+    if (img.complete) {
+      loadedImages++
+    } else {
+      img.addEventListener('load', () => {
+        loadedImages++
+        if (loadedImages === images.length) {
+          calculateWidth()
+          initAnimation()
+        }
+      })
+    }
+  }
 
-  tl.to(trackRef.value, {
-    x: -singleSetWidth,
-    duration: 20,
-    ease: 'none'
-  })
+  if (loadedImages === images.length) {
+    calculateWidth()
+    initAnimation()
+  }
 
-  tl.set(trackRef.value, { x: 0 })
+  function initAnimation() {
+    const tl = gsap.timeline({
+      repeat: -1,
+      defaults: { ease: 'none' }
+    })
+
+    const singleSetWidth = trackWidth.value / 2
+
+    tl.to(trackRef.value, {
+      x: -singleSetWidth,
+      duration: 20,
+      ease: 'none',
+      modifiers: {
+        x: gsap.utils.unitize(x => {
+          // When we reach the end, jump back to start
+          return ((parseFloat(x) % singleSetWidth) + singleSetWidth) % singleSetWidth - singleSetWidth
+        })
+      }
+    })
+  }
 })
 </script>
 

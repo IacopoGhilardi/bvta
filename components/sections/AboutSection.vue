@@ -21,19 +21,14 @@
             ref="titleRef"
             class="text-3xl md:text-4xl font-bold text-gray-150"
           >
-            Chi Siamo
+            {{ content.title }}
           </h2>
           <div 
             ref="contentRef"
             class="space-y-4 text-gray-150"
           >
-            <p class="text-base md:text-lg">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, quibusdam. 
-              Maiores expedita exercitationem dignissimos assumenda repellendus consectetur modi amet.
-            </p>
-            <p class="text-base md:text-lg">
-              Proin condimentum sollicitudin felis. Sed sagittis hendrerit malesuada. 
-              Mauris consectetur sapien eget diam finibus, in eleifend ex tincidunt.
+            <p v-for="paragraph in content.description" :key="paragraph">
+              {{ paragraph }}
             </p>
           </div>
         </div>
@@ -46,6 +41,7 @@
 import { onMounted, ref } from 'vue'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
+import aboutContent from '~/content/about.json'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -54,6 +50,7 @@ const shapeRef = ref(null)
 const titleRef = ref(null)
 const contentRef = ref(null)
 const buttonRef = ref(null)
+const content = ref(aboutContent)
 
 onMounted(() => {
   const tl = gsap.timeline({

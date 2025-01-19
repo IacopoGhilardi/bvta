@@ -1,12 +1,12 @@
 <template>
   <div 
     ref="logoRef"
-    class="p-4 flex items-center justify-center opacity-0"
+    class="p-4 flex items-center justify-center opacity-0 shrink-0"
   >
     <img 
       :src="imageUrl" 
       :alt="name"
-      class="max-h-12 grayscale hover:grayscale-0 transition-all duration-300"
+      class="grayscale hover:grayscale-0 transition-all duration-300"
     >
   </div>
 </template>
