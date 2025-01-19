@@ -5,7 +5,7 @@
     :class="{ 'header-hidden': isHeaderHidden }"
   >
     <UContainer>
-      <div class="flex justify-between items-center h-16 px-4 text-black">
+      <div class="flex justify-between items-center h-16 px-4 text-white">
         <div class="flex items-center">
           <NuxtLink to="/" class="text-xl font-bold">
             Logo
