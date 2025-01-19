@@ -5,7 +5,7 @@
         ref="titleRef" 
         class="text-3xl font-bold text-center text-primary mb-12"
       >
-        <!-- {{ content.title }} -->
+        {{ content.title }}
       </h2>
       
       <div 
@@ -57,7 +57,6 @@ const cardsRef = ref(null)
 const content = ref(eventsContent)
 
 onMounted(() => {
-  // Title animation
   gsap.from(titleRef.value, {
     opacity: 0,
     y: 50,
@@ -69,8 +68,7 @@ onMounted(() => {
       toggleActions: 'play none none reverse'
     }
   })
-
-  // Cards animation
+  
   gsap.from(cardsRef.value.children, {
     opacity: 0,
     y: 50,

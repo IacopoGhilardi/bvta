@@ -1,11 +1,11 @@
 <template>
   <header 
     ref="header" 
-    class="border-b border-primary fixed w-full z-50 bg-background-primary shadow-lg"
+    class="border-b border-primary fixed w-full z-50 bg-primary shadow-lg"
     :class="{ 'header-hidden': isHeaderHidden }"
   >
     <UContainer>
-      <div class="flex justify-between items-center h-16 px-4 text-white">
+      <div class="flex justify-between items-center h-16 px-4 text-black">
         <div class="flex items-center">
           <NuxtLink to="/" class="text-xl font-bold">
             Logo

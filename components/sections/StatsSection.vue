@@ -4,7 +4,7 @@
       <div class="text-center mb-12">
         <h2 
           ref="titleRef"
-          class="text-3xl md:text-4xl font-bold mb-4"
+          class="text-3xl md:text-4xl font-bold mb-4 text-primary"
         >
           {{ content.title }}
         </h2>

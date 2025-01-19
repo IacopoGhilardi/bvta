@@ -3,19 +3,28 @@
     <UContainer class="py-12">
       <!-- Social Icons -->
       <div class="flex flex-col items-center justify-center mb-4">
-        
-        <div class="flex items-center justify-center space-x-4 w-full">
-          <div class="hidden md:block h-px bg-gray-800 flex-grow"></div>        
-          <a href="https://www.instagram.com/_beachvolleytirreniaacademy/" class="text-gray-400 hover:text-primary transition-colors" target="_blank">
-            <UIcon name="i-simple-icons-instagram" class="w-6 h-6" />
-          </a>
-          <a href="#" class="text-gray-400 hover:text-primary transition-colors">
-            <UIcon name="i-simple-icons-whatsapp" class="w-6 h-6" />
-          </a>
-          <a href="#" class="text-gray-400 hover:text-primary transition-colors">
-            <UIcon name="i-simple-icons-gmail" class="w-6 h-6" />
-          </a>
+        <!-- Contenitore delle icone sociali con spazio orizzontale -->
+        <div class="flex items-center justify-center gap-4 w-full">
+          <!-- Linea sinistra -->
+          <div class="hidden md:block h-px bg-gray-800 flex-grow"></div>
+          
+          <!-- Icone sociali -->
+          <div class="flex items-center gap-4">
+            <a href="https://www.instagram.com/_beachvolleytirreniaacademy/" 
+               class="text-gray-400 hover:text-primary transition-colors" 
+               target="_blank"
+            >
+              <UIcon name="i-simple-icons-instagram" class="w-6 h-6" />
+            </a>
+            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+              <UIcon name="i-simple-icons-whatsapp" class="w-6 h-6" />
+            </a>
+            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+              <UIcon name="i-simple-icons-gmail" class="w-6 h-6" />
+            </a>
+          </div>
 
+          <!-- Linea destra -->
           <div class="hidden md:block h-px bg-gray-800 flex-grow"></div>
         </div>
       </div>

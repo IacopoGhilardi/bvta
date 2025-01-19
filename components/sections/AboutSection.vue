@@ -19,7 +19,7 @@
         <div class="space-y-6 order-1 md:order-2 text-white">
           <h2 
             ref="titleRef"
-            class="text-3xl md:text-4xl font-bold text-gray-150"
+            class="text-3xl md:text-4xl font-bold text-gray-150 text-primary"
           >
             {{ content.title }}
           </h2>
