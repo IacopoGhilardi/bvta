@@ -5,7 +5,7 @@
         <div class="relative order-2 md:order-1">
           <div ref="imageWrapperRef" class="relative z-10">
             <img
-              src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?q=80&w=2070"
+              :src="content.image"
               alt="Beach Volley"
               class="rounded-lg shadow-xl w-full"
             />
@@ -42,7 +42,7 @@ import { onMounted, ref } from 'vue'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import aboutContent from '~/content/about.json'
-
+import aboutImage from '~/assets/images/about.jpg'
 gsap.registerPlugin(ScrollTrigger)
 
 const imageWrapperRef = ref(null)
@@ -50,7 +50,10 @@ const shapeRef = ref(null)
 const titleRef = ref(null)
 const contentRef = ref(null)
 const buttonRef = ref(null)
-const content = ref(aboutContent)
+const content = ref({
+  ...aboutContent,
+  image: aboutImage
+})
 
 onMounted(() => {
   const tl = gsap.timeline({

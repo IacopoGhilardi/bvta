@@ -39,6 +39,7 @@ import { onMounted, ref } from 'vue'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import { useScrollTo } from '~/composables/useScrollTo'
+import heroImage from '~/assets/images/hero.jpg'
 import heroContent from '~/content/hero.json'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -48,7 +49,10 @@ const { scrollToElement } = useScrollTo()
 const titleRef = ref(null)
 const subtitleRef = ref(null)
 const buttonsRef = ref(null)
-const content = ref(heroContent)
+const content = ref({
+  ...heroContent,
+  backgroundImage: heroImage
+})
 
 onMounted(() => {
   const tl = gsap.timeline({
