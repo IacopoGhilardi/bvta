@@ -1,0 +1,41 @@
+{
+  "title": "La Nostra Gallery",
+  "images": [
+    {
+      "id": 1,
+      "url": "https://placehold.co/600x600?text=Beach+Volley+1",
+      "alt": "Beach Volley Training",
+      "caption": "Allenamento in spiaggia"
+    },
+    {
+      "id": 2,
+      "url": "https://placehold.co/600x600?text=Beach+Volley+2",
+      "alt": "Tournament Action",
+      "caption": "Torneo estivo"
+    },
+    {
+      "id": 3,
+      "url": "https://placehold.co/600x600?text=Beach+Volley+3",
+      "alt": "Team Building",
+      "caption": "Attività di gruppo"
+    },
+    {
+      "id": 4,
+      "url": "https://placehold.co/600x600?text=Beach+Volley+4",
+      "alt": "Beach Training",
+      "caption": "Allenamento tecnico"
+    },
+    {
+      "id": 5,
+      "url": "https://placehold.co/600x600?text=Beach+Volley+5",
+      "alt": "Competition",
+      "caption": "Competizione locale"
+    },
+    {
+      "id": 6,
+      "url": "https://placehold.co/600x600?text=Beach+Volley+6",
+      "alt": "Beach Event",
+      "caption": "Evento sulla spiaggia"
+    }
+  ]
+} 

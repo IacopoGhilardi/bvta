@@ -52,6 +52,7 @@
 <script setup>
 import { useScrollTo } from '~/composables/useScrollTo'
 import footerContent from '~/content/footer.json'
+import logoBVTA from '~/assets/images/logo/logo.png'
 
 const { scrollToElement } = useScrollTo()
 

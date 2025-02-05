@@ -4,7 +4,8 @@
         <PartnersSection id="partners" />
         <AboutSection id="about" />
         <StatsSection id="stats" />
-        <UpcomingEventSection id="events" />
+        <!-- <UpcomingEventSection id="events" /> -->
+        <GallerySection id="gallery" />
         <!-- <ContactSection id="contact" /> -->
     </Main>
 </template>
@@ -16,4 +17,5 @@ import StatsSection from "@/components/sections/StatsSection.vue";
 import PartnersSection from "@/components/sections/PartnersSection.vue";
 import ContactSection from "@/components/sections/ContactSection.vue";
 import UpcomingEventSection from "@/components/sections/UpcomingEventSection.vue";
+import GallerySection from "@/components/sections/GallerySection.vue";
 </script>
