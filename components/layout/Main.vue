@@ -1,6 +1,6 @@
 <template>
     <div class="min-h-screen flex flex-col bg-gray-100 overflow-x-hidden">
-      <Header :isHeaderHidden="isHeaderHidden" />
+      <Header />
       <div class="pt-16 flex-grow">
         <slot />
       </div>

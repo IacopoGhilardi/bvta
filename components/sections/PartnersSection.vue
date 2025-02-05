@@ -32,17 +32,45 @@ import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import PartnerLogo from '../atoms/PartnerLogo.vue'
 import partnersContent from '~/content/partners.json'
-gsap.registerPlugin(ScrollTrigger)
+import logoVince from '~/assets/images/partners/logo_vince.jpg'
+import logoGorgoroni from '~/assets/images/partners/logo_gorgoroni.png'
+import logoBalestri from '~/assets/images/partners/logo_fede_balestri.png'
+import logoCalortech from '~/assets/images/partners/logo_calortech.png'
+
+const content = ref({
+  title: partnersContent.title,
+  partners: [
+    {
+      id: 1,
+      name: "Vince",
+      imageUrl: logoVince
+    },
+    {
+      id: 2,
+      name: "Gorgoroni",
+      imageUrl: logoGorgoroni
+    },
+    {
+      id: 3,
+      name: "Federico Balestri",
+      imageUrl: logoBalestri
+    },
+    {
+      id: 4,
+      name: "Calortech",
+      imageUrl: logoCalortech
+    }
+  ]
+})
+
+const duplicatedPartners = computed(() => {
+  return [...content.value.partners, ...content.value.partners.map(p => ({...p, id: p.id + '_clone'}))]
+})
 
 const titleRef = ref(null)
 const sliderRef = ref(null)
 const trackRef = ref(null)
 const trackWidth = ref(0)
-const content = ref(partnersContent)
-
-const duplicatedPartners = computed(() => {
-  return [...content.value.partners, ...content.value.partners.map(p => ({...p, id: p.id + '_clone'}))]
-})
 
 onMounted(() => {
   // Title animation

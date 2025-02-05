@@ -15,11 +15,6 @@
       "id": 3,
       "name": "Partner 3",
       "imageUrl": "https://placehold.co/200x80?text=Partner+3"
-    },
-    {
-      "id": 4,
-      "name": "Partner 4",
-      "imageUrl": "https://placehold.co/200x80?text=Partner+4"
     }
   ]
 } 
