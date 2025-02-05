@@ -114,7 +114,7 @@
       <!-- Backdrop -->
       <div ref="backdrop" class="absolute inset-0 bg-black/80 opacity-0" @click="closeModal"></div>
       <!-- Modal content -->
-      <div ref="modalContent" class="relative z-10 max-w-4xl w-full opacity-0 scale-95">
+      <div ref="modalContent" class="relative z-10 max-w-4xl w-fit opacity-0 scale-95 mx-auto">
         <button 
           @click="closeModal" 
           class="absolute -top-4 -right-4 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg"
@@ -124,7 +124,7 @@
         <img 
           :src="getActiveImage()"
           :alt="content.images[activeIndex]?.alt"
-          class="w-full h-auto rounded-lg"
+          class="w-auto h-auto rounded-lg max-h-[75vh] object-contain"
         />
       </div>
     </div>

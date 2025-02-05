@@ -26,12 +26,36 @@
 
         <!-- Mobile Menu Button -->
         <UButton
-          class="md:hidden"
+          class="md:hidden relative w-10 h-10"
           color="gray"
           variant="ghost"
-          icon="i-heroicons-bars-3"
           @click="isMenuOpen = !isMenuOpen"
-        />
+        >
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="w-6 h-5 relative">
+              <span 
+                class="absolute w-full h-0.5 bg-current transform transition-all duration-300 ease-in-out"
+                :class="[
+                  isMenuOpen 
+                    ? 'rotate-45 top-2' 
+                    : 'rotate-0 top-0'
+                ]"
+              ></span>
+              <span 
+                class="absolute w-full h-0.5 bg-current transform transition-all duration-300 ease-in-out top-2"
+                :class="{ 'opacity-0': isMenuOpen }"
+              ></span>
+              <span 
+                class="absolute w-full h-0.5 bg-current transform transition-all duration-300 ease-in-out"
+                :class="[
+                  isMenuOpen 
+                    ? '-rotate-45 top-2' 
+                    : 'rotate-0 top-4'
+                ]"
+              ></span>
+            </div>
+          </div>
+        </UButton>
       </div>
 
       <!-- Mobile Menu -->
