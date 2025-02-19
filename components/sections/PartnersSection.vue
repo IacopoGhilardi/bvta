@@ -36,6 +36,8 @@ import logoVince from '~/assets/images/partners/logo_vince.jpg'
 import logoGorgoroni from '~/assets/images/partners/logo_gorgoroni.png'
 import logoBalestri from '~/assets/images/partners/logo_fede_balestri.png'
 import logoCalortech from '~/assets/images/partners/logo_calortech.png'
+import logoOrangeBeach from '~/assets/images/partners/logo_orange_beach.png'
+import logoPardi from '~/assets/images/partners/logo_pardi.png'
 
 const content = ref({
   title: partnersContent.title,
@@ -47,7 +49,7 @@ const content = ref({
     },
     {
       id: 2,
-      name: "Gorgoroni",
+      name: "Gorgoroni", 
       imageUrl: logoGorgoroni
     },
     {
@@ -59,6 +61,16 @@ const content = ref({
       id: 4,
       name: "Calortech",
       imageUrl: logoCalortech
+    },
+    {
+      id: 5,
+      name: "OrangeBeach",
+      imageUrl: logoOrangeBeach
+    },
+    {
+      id: 6,
+      name: "Pardi",
+      imageUrl: logoPardi
     }
   ]
 })
