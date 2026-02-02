@@ -1,5 +1,5 @@
 <template>
-  <section class="py-16 overflow-hidden">
+  <section class="py-16 overflow-hidden bg-white relative z-30 -mt-1">
     <UContainer>
       <h2 
         ref="titleRef" 
@@ -8,7 +8,7 @@
         {{ content.title }}
       </h2>
       
-      <div ref="sliderRef" class="relative overflow-hidden">
+      <div ref="sliderRef" class="relative overflow-hidden mb-12">
         <div 
           ref="trackRef"
           class="flex gap-8 items-center"
@@ -22,6 +22,19 @@
           />
         </div>
       </div>
+
+      <div class="flex justify-center mt-8">
+        <UButton 
+          to="/sponsor"
+          size="xl"
+          color="primary"
+          variant="solid"
+          class="font-bold text-white bg-primary hover:bg-primary-dark hover:text-white px-8 animate-bounce-slow"
+        >
+          Diventa Sponsor
+        </UButton>
+      </div>
+
     </UContainer>
   </section>
 </template>
@@ -32,51 +45,14 @@ import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import PartnerLogo from '../atoms/PartnerLogo.vue'
 import partnersContent from '~/content/partners.json'
-import logoVince from '~/assets/images/partners/logo_vince.jpg'
-import logoGorgoroni from '~/assets/images/partners/logo_gorgoroni.png'
-import logoBalestri from '~/assets/images/partners/logo_fede_balestri.png'
-import logoCalortech from '~/assets/images/partners/logo_calortech.png'
-import logoOrangeBeach from '~/assets/images/partners/logo_orange_beach.png'
-import logoPardi from '~/assets/images/partners/logo_pardi.png'
 
-const content = ref({
-  title: partnersContent.title,
-  partners: [
-    {
-      id: 1,
-      name: "Vince",
-      imageUrl: logoVince
-    },
-    {
-      id: 2,
-      name: "Gorgoroni", 
-      imageUrl: logoGorgoroni
-    },
-    {
-      id: 3,
-      name: "Federico Balestri",
-      imageUrl: logoBalestri
-    },
-    {
-      id: 4,
-      name: "Calortech",
-      imageUrl: logoCalortech
-    },
-    {
-      id: 5,
-      name: "OrangeBeach",
-      imageUrl: logoOrangeBeach
-    },
-    {
-      id: 6,
-      name: "Pardi",
-      imageUrl: logoPardi
-    }
-  ]
-})
+const content = ref(partnersContent)
 
 const duplicatedPartners = computed(() => {
-  return [...content.value.partners, ...content.value.partners.map(p => ({...p, id: p.id + '_clone'}))]
+  return [
+    ...content.value.partners, 
+    ...content.value.partners.map(p => ({...p, id: p.id + '_clone'}))
+  ]
 })
 
 const titleRef = ref(null)
@@ -85,7 +61,6 @@ const trackRef = ref(null)
 const trackWidth = ref(0)
 
 onMounted(() => {
-  // Title animation
   gsap.from(titleRef.value, {
     opacity: 0,
     y: 50,
@@ -98,36 +73,37 @@ onMounted(() => {
     }
   })
 
-  // Calculate total width after images are loaded
   const calculateWidth = () => {
+    if (!trackRef.value) return
     const logos = trackRef.value.children
     let totalWidth = 0
     for (let logo of logos) {
-      totalWidth += logo.offsetWidth + 32 // 32px is the gap (gap-8)
+      totalWidth += logo.offsetWidth + 32
     }
-    trackWidth.value = totalWidth - 32 // Subtract last gap
+    trackWidth.value = totalWidth - 32
   }
 
-  // Wait for images to load
-  const images = trackRef.value.getElementsByTagName('img')
+  const images = trackRef.value ? trackRef.value.getElementsByTagName('img') : []
   let loadedImages = 0
-  for (let img of images) {
-    if (img.complete) {
-      loadedImages++
-    } else {
-      img.addEventListener('load', () => {
-        loadedImages++
-        if (loadedImages === images.length) {
-          calculateWidth()
-          initAnimation()
-        }
-      })
+  
+  const checkImagesAndInit = () => {
+    loadedImages++
+    if (loadedImages >= images.length) {
+      calculateWidth()
+      initAnimation()
     }
   }
 
-  if (loadedImages === images.length) {
+  if (images.length > 0) {
+    for (let img of images) {
+      if (img.complete) {
+        checkImagesAndInit()
+      } else {
+        img.addEventListener('load', checkImagesAndInit)
+      }
+    }
+  } else {
     calculateWidth()
-    initAnimation()
   }
 
   function initAnimation() {
@@ -135,6 +111,8 @@ onMounted(() => {
       repeat: -1,
       defaults: { ease: 'none' }
     })
+
+    if (trackWidth.value <= 0) return
 
     const singleSetWidth = trackWidth.value / 2
 
@@ -144,7 +122,6 @@ onMounted(() => {
       ease: 'none',
       modifiers: {
         x: gsap.utils.unitize(x => {
-          // When we reach the end, jump back to start
           return ((parseFloat(x) % singleSetWidth) + singleSetWidth) % singleSetWidth - singleSetWidth
         })
       }
@@ -156,5 +133,12 @@ onMounted(() => {
 <style scoped>
 .partner-track {
   will-change: transform;
+}
+.animate-bounce-slow {
+  animation: bounce 3s infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
 }
 </style>
